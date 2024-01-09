@@ -45,3 +45,17 @@ Route::PUT('/menu/update/{id}', 'App\Http\Controllers\MenuController@update')
 
 // Route::get('/menu/edit/{id}', 'App\Http\Controllers\MenuController@edit')
 // ->name('menu.edit');
+
+
+
+///////////////////////// ItemsController
+Route::resource('item', App\Http\Controllers\ItemController::class);
+Route::get('/item/delete/{id}', 'App\Http\Controllers\ItemController@destroy')
+    ->name('item.destroy');
+Route::get('/item', 'App\Http\Controllers\ItemController@index')
+    ->name('item');
+
+Route::post('/item/store', 'App\Http\Controllers\ItemController@store')
+    ->name('item.store');
+Route::PUT('/item/update/{id}', 'App\Http\Controllers\ItemController@update')
+    ->name('item.update');

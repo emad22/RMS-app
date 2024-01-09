@@ -39,6 +39,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('menu') }}">{{ __('Menu') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('item') }}">{{ __('Item') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
