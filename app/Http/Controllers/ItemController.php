@@ -55,25 +55,26 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         
-        // dd($imageName);
-
+        // dd($request->menu);
+// exit;
         $item = new Item();
         if ($request->hasfile('image')) {
             $imageName = time() . '.' . $request->image->getClientOriginalExtension();
             $request->image->move(public_path('images'), $imageName);
             $item->title = $request->title;
             $item->description = $request->description;
-            $item->type = $request->type;
             $item->status = $request->status;
             $item->image = 'images/' . $imageName;
+            $item->price = $request->price;
+            $item->menu_id= $request->menu;
             $item->user_id = Auth()->User()->id;
             $item->save();
         } else{
             $item->title = $request->title;
-            $item->title = $request->title;
             $item->description = $request->description;
-            $item->type = $request->type;
             $item->status = $request->status;
+            $item->menu_id = $request->menu;
+            $item->price = $request->price;
             $item->image = 'images/default.jpg';
             $item->user_id = Auth()->User()->id;
             $item->save();
@@ -103,10 +104,11 @@ class ItemController extends Controller
     public function edit($id)
     {
         // dd($id);
-        $items = item::findOrFail($id);
+        $items = Item::findOrFail($id);
+        $menus = Menu::all();
         // dd( $items->menu->title);
         // dd($item);
-        return view('items.edit', compact('items'));
+        return view('items.edit', compact('items','menus'));
     }
 
     /**
@@ -128,17 +130,18 @@ class ItemController extends Controller
             $request->image->move(public_path('images'), $imageName);
             $item->title = $request->title;
             $item->description = $request->description;
-            $item->type = $request->type;
             $item->status = $request->status;
             $item->image = 'images/' . $imageName;
+            $item->price = $request->price;
+            $item->menu_id = $request->menu;
             $item->user_id = Auth()->User()->id;
             $item->save();
         } else {
             $item->title = $request->title;
-            $item->title = $request->title;
             $item->description = $request->description;
-            $item->type = $request->type;
             $item->status = $request->status;
+            $item->menu_id = $request->menu;
+            $item->price = $request->price;
             // $item->image = 'images/default.jpg';
             $item->user_id = Auth()->User()->id;
             $item->save();

@@ -39,14 +39,31 @@
                         <hr>
                         <div class="form-group ">
                             <label for="inputState">item Status</label>
-                            <select name="status" id="inputState" class="form-control" >
+                            <select name="status" id="inputState" class="form-control">
+                                <option value="" selected disabled>Menu Item</option>                                
+                                <option value="1" id="Found" class="form-control">Found</option>
+                                <option value="0" id="Not-found" class="form-control">not Found</option>
+                            </select>
+                        </div>
+                        <hr>
+                        <div class="form-group ">
+                            <label for="inputState">item Price</label>
+                            <input type="number" class="form-control" id="" placeholder="Price Of Item" name="price" required>
+                        </div>
+                        <hr>
+                        <div class="form-group ">
+                            <label for="inputState">Select Menu</label>
+                            <select name="menu" id="inputState" class="form-control">
                                 <option value="" selected disabled>Menu Item</option>
                                 @foreach ($menus as $menu)
-                                    <option value="1" id="{{ $menu->id }}" class="form-control">{{ $menu->title }}</option>
+                                    <option  value="{{ $menu->id }}" id="{{ $menu->id }}" class="form-control">{{ $menu->title }}</option>
                                 @endforeach
                                 {{-- <option value="1" id="active" class="form-control">Active</option>
                                 <option value="0" id="active" class="form-control">noInactive</option> --}}
+                                
+                                
                             </select>
+                            
                         </div>
                         <hr>
                         <div class="form-group">
