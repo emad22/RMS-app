@@ -59,3 +59,19 @@ Route::post('/item/store', 'App\Http\Controllers\ItemController@store')
     ->name('item.store');
 Route::PUT('/item/update/{id}', 'App\Http\Controllers\ItemController@update')
     ->name('item.update');
+
+///////////////////////// MealsController
+Route::resource('meal', App\Http\Controllers\MealController::class);
+Route::get('/meal/delete/{id}', 'App\Http\Controllers\MealController@destroy')
+    ->name('meal.destroy');
+Route::get('/meal', 'App\Http\Controllers\MealController@index')
+    ->name('meal');
+
+Route::post('/meal/store', 'App\Http\Controllers\MealController@store')
+    ->name('meal.store');
+Route::PUT('/meal/update/{id}', 'App\Http\Controllers\MealController@update')
+    ->name('meal.update');
+
+// route::get('items/getItem/{id}', [App\Http\Controllers\MealController::class, 'getItem']);
+
+Route::get('/getItem/{id}', 'App\Http\Controllers\MealController@getItem');

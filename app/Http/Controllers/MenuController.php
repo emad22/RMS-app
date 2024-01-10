@@ -23,7 +23,8 @@ class MenuController extends Controller
     {
         //
         // echo "INDEX OF MENUCONTROLLER";
-        $menus = Menu::all();
+        // $menus = Menu::all();
+        $menus = Menu::paginate(2);
         return view('menus.index', compact('menus'));
         // dd( $menus );
     }
